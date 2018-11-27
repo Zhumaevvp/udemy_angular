@@ -12,6 +12,10 @@ export class ServersComponent implements OnInit {
   serverName = 'testseerv';
   userName = '';
   serverCreated = false;
+  servers = ['testserver', 'testserver 2'];
+  buttonPress = false;
+  presslog = [];
+
 
   constructor() {
     setTimeout(() => {
@@ -23,9 +27,18 @@ export class ServersComponent implements OnInit {
   }
   onCreateServer() {
     this.serverCreated = true;
+    this.servers.push(this.serverName);
     this.serverCreationStatus = 'Server was created! Name is ' + this.serverName;
   }
   onUpdateServerName(event: Event) {
     this.serverName = (<HTMLInputElement>event.target).value;
+  }
+  onShowSecretPar() {
+    this.buttonPress = true;
+  }
+  logPresses() {
+    this.buttonPress = !this.buttonPress;
+    // this.presslog.push(this.presslog.length + 1);
+    this.presslog.push(new Date());
   }
 }

@@ -16,4 +16,14 @@
 <!-- <p [innerText] = "allowNewServer"></p>
 <p>{{ serverCreationStatus }}</p> -->
 <p *ngIf="serverCreated">Server was created, server name is {{ serverName }}</p>
-<app-server></app-server>
+<app-server *ngFor="let server of servers"></app-server>
+<hr>
+
+<button class="btn btn-primary"
+(click) ="logPresses()"
+>Display Details</button>
+<p *ngIf="buttonPress">Button pressed!!</p>
+<div *ngFor="let logItem of presslog; let i = index"
+[ngStyle]="{backgroundColor: i >= 4 ? 'blue' : 'transparent'}"
+[ngClass]="{'white-text': i >= 4}"
+>{{ logItem }}</div>
